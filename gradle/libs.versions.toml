@@ -14,6 +14,7 @@ spring-boot-starter-test                   = { module = "org.springframework.boo
 spring-boot-starter-actuator               = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 spring-kafka                               = { module = "org.springframework.kafka:spring-kafka" }
 spring-kafka-test                          = { module = "org.springframework.kafka:spring-kafka-test" }
+spring-security-test                       = { module = "org.springframework.security:spring-security-test" }
 flyway-core                                = { module = "org.flywaydb:flyway-core" }
 flyway-postgresql                          = { module = "org.flywaydb:flyway-database-postgresql" }
 postgresql                                 = { module = "org.postgresql:postgresql" }
