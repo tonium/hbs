@@ -1,13 +1,13 @@
 server:
-  port: 8082
+  port: ${SERVER_PORT:8082}
 
 spring:
   application:
     name: ingestion-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/hbs
-    username: hbs
-    password: hbs
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/hbs}
+    username: ${DB_USERNAME:hbs}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -18,14 +18,13 @@ spring:
         format_sql: true
     show-sql: false
   flyway:
-    enabled: true
-    locations: classpath:db/migration
+    enabled: false  # 마이그레이션은 subscription-service에서 관리
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -33,7 +32,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/realms/hbs/protocol/openid-connect/certs
+          jwk-set-uri: ${KEYCLOAK_JWK_URI:http://localhost:8080/realms/hbs/protocol/openid-connect/certs}
 
 management:
   endpoints:
